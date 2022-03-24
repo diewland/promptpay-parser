@@ -7,7 +7,10 @@ def parse(txt):
     return rparse(new_txt)
 
 def validate_checksum(checksum):
-    return True # TODO add validate logic
+    return True # TODO add logic
+
+def detect_nested_block(value):
+    return False # TODO add logic
 
 def rparse(txt, obj={}):
 
@@ -26,7 +29,10 @@ def rparse(txt, obj={}):
         return None
 
     # update object
-    obj[field_no] = value
+    if detect_nested_block(value):
+        obj[field_no] = rparse(value)
+    else:
+        obj[field_no] = value
 
     # recursive
     return rparse(new_txt, obj)
