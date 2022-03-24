@@ -9,5 +9,7 @@ if __name__ == "__main__":
 
     for s in sample:
         obj = parse(s)
+        print()
         print(s)
+        print()
         pp(obj)
