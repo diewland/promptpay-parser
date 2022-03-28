@@ -20,18 +20,18 @@ def detect_block(txt):
     idx = 0
     while idx < len(txt):
         new_txt = txt[idx:]
-        try:
+        try: # extract size, value
             _, size, value, _ = extract_block_data(new_txt)
         except:
             return False
-        if size <= 0 or size != len(value):
+        if size <= 0 or size != len(value): # invalid size
             return False
-        idx += 4 + size
+        idx += 4 + size # update next index
     new_txt = txt[idx:]
-    if not new_txt:
-        return True
-    else:
+    if new_txt: # text left
         return False
+    else: # text empty
+        return True
 
 def rparse(txt):
     obj = {}
